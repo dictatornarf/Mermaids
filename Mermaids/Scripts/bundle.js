@@ -290,64 +290,9 @@ var Swimmer = (function () {
     return Swimmer;
 }());
 //# sourceMappingURL=Swimmer.js.map
-var TimeCooker = (function () {
-    function TimeCooker(pCookTime, pAmount, pAmountIncrease) {
-        this.pCookTime = pCookTime;
-        this.pAmount = pAmount;
-        this.pAmountIncrease = pAmountIncrease;
-        this._amount = pAmount;
-        this._nextAmountFlag = -999999;
-        this._nextAmount = this._nextAmountFlag;
-        this._startTime = new Date(1970, 1, 1);
-        this.CookTime = pCookTime;
-        this.AmountIncrease = pAmountIncrease;
-    }
-    TimeCooker.prototype.GetAmount = function () {
-        if (!this.IsCooking() && this._nextAmount !== this._nextAmountFlag) {
-            this._amount = this._nextAmount;
-            this._nextAmount = this._nextAmountFlag;
-        }
-        return this._amount;
-    };
-    TimeCooker.prototype.GetPercentage = function () {
-        var toReturn = 1.0;
-        if (this.IsCooking()) {
-            var now = new Date();
-            var diff = now.valueOf() - this._startTime.valueOf();
-            toReturn = diff / this.CookTime;
-        }
-        return toReturn;
-    };
-    ;
-    TimeCooker.prototype.IsCooking = function () {
-        var t = new Date();
-        t.setMilliseconds(t.getMilliseconds() - this.CookTime);
-        return this._startTime >= t;
-    };
-    ;
-    TimeCooker.prototype.Cook = function () {
-        if (!this.IsCooking()) {
-            this._startTime = new Date();
-            this._nextAmount = this._amount + this.AmountIncrease;
-        }
-    };
-    ;
-    return TimeCooker;
-}());
-//# sourceMappingURL=TimeCooker2.js.map
-var Engine = (function () {
-    function Engine() {
-        this.Wood = new TimeCooker(1000, 0, 1);
-        this.Rock = new TimeCooker(7000, 0, 3);
-    }
-    return Engine;
-}());
-//# sourceMappingURL=Engine2.js.map
 $(document).ready(function () {
-    var engine = new Engine();
     var canvas = document.getElementById("cGame");
     var ctx = canvas.getContext("2d");
-    //let img: Array<HTMLImageElement> = new Array<HTMLImageElement>();
     var resources = new Array();
     resources.push("resources/BabyMermaid.png");
     resources.push("resources/BabyMermaid2.png");
@@ -379,56 +324,7 @@ $(document).ready(function () {
     for (var i = 0; i < resources.length; i++) {
         _loop_1();
     }
-    //img.push(<HTMLImageElement>document.getElementById("img1"));
-    //img.push(<HTMLImageElement>document.getElementById("img2"));
-    //img.push(<HTMLImageElement>document.getElementById("img3"));
-    //img.push(<HTMLImageElement>document.getElementById("img4"));
-    //img.push(<HTMLImageElement>document.getElementById("img5"));
-    //img.push(<HTMLImageElement>document.getElementById("img6"));
-    //img.push(<HTMLImageElement>document.getElementById("img7"));
-    //img.push(<HTMLImageElement>document.getElementById("img8"));
-    //img.push(<HTMLImageElement>document.getElementById("img9"));
-    //img.push(<HTMLImageElement>document.getElementById("img10"));
-    //img.push(<HTMLImageElement>document.getElementById("img11"));
-    //img.push(<HTMLImageElement>document.getElementById("img12"));
-    //img.push(<HTMLImageElement>document.getElementById("img13"));
-    //img.push(<HTMLImageElement>document.getElementById("img14"));
-    //img.push(<HTMLImageElement>document.getElementById("img15"));
-    //let swimmer: Array<Swimmer> = new Array<Swimmer>();
-    //for (var i = 0; i < img.length; i++) {
-    //    let randomX = Math.random() * canvas.clientWidth;
-    //    let randomY = Math.random() * canvas.clientHeight;
-    //    let box = BoundedBox.WithAspectRatio(randomX, randomY, img[i].width, img[i].height, 300, 0.3);
-    //    box.Percentage = Math.random();
-    //    swimmer.push(new Swimmer(img[i], ctx, box));
-    //}
-    ////let box = new BoundedBox(200, 20, img[0].width, img[0].height, 0.1);
-    ////let box1 = BoundedBox.WithAspectRatio(100, 50, img[0].width, img[0].height, 200, 0.1);
-    ////let box2 = BoundedBox.WithAspectRatio(300, 150, img[0].width, img[0].height, 200, 0.1);
-    ////let swimmer1: Swimmer = new Swimmer(img[0], ctx, box1);
-    ////let swimmer2: Swimmer = new Swimmer(img[0], ctx, box2);
-    ////box.Percentage = 1;
-    var btnWood = $("#btnWood");
-    var showWood = $("#showWood");
-    btnWood.on("click", function () { return engine.Wood.Cook(); });
-    var btnRock = $("#btnRock");
-    var showRock = $("#showRock");
-    btnRock.on("click", function () { return engine.Rock.Cook(); });
     var UpdateDisplay = function () {
-        showWood.html(engine.Wood.GetAmount() + " %" + (engine.Wood.GetPercentage() * 100).toFixed(2));
-        if (engine.Wood.IsCooking()) {
-            btnWood.hide();
-        }
-        else {
-            btnWood.show();
-        }
-        showRock.html(engine.Rock.GetAmount() + " %" + (engine.Rock.GetPercentage() * 100).toFixed(2));
-        if (engine.Rock.IsCooking()) {
-            btnRock.hide();
-        }
-        else {
-            btnRock.show();
-        }
         var grd = ctx.createLinearGradient(0, 0, 0, ctx.canvas.clientHeight);
         grd.addColorStop(0, "#a2c3f9");
         grd.addColorStop(1, "#4286f4");
@@ -450,4 +346,4 @@ $(document).ready(function () {
     };
     UpdateDisplay();
 });
-//# sourceMappingURL=game2.js.map
+//# sourceMappingURL=Game.js.map
