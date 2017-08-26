@@ -1,41 +1,45 @@
-var Game;
-Game = Game || {};
-Game.TimeCooker = function (cookTime, amount, amountIncrease) {
-    "use strict";
-    var _amount = amount;
-    var _nextAmountFlag = -999999;
-    var _nextAmount = _nextAmountFlag;
-    var _startTime = new Date(1970, 1, 1);
-    this.amountIncrease = amountIncrease;
-    this.cookTime = cookTime;
-    this.getAmount = function () {
-        if (!this.isCooking() && _nextAmount !== _nextAmountFlag) {
-            _amount = _nextAmount;
-            _nextAmount = _nextAmountFlag;
+var TimeCooker = (function () {
+    function TimeCooker(pCookTime, pAmount, pAmountIncrease) {
+        this.pCookTime = pCookTime;
+        this.pAmount = pAmount;
+        this.pAmountIncrease = pAmountIncrease;
+        this._amount = pAmount;
+        this._nextAmountFlag = -999999;
+        this._nextAmount = this._nextAmountFlag;
+        this._startTime = new Date(1970, 1, 1);
+        this.CookTime = pCookTime;
+        this.AmountIncrease = pAmountIncrease;
+    }
+    TimeCooker.prototype.GetAmount = function () {
+        if (!this.IsCooking() && this._nextAmount !== this._nextAmountFlag) {
+            this._amount = this._nextAmount;
+            this._nextAmount = this._nextAmountFlag;
         }
-        return _amount;
+        return this._amount;
     };
-    this.getPercentage = function () {
+    TimeCooker.prototype.GetPercentage = function () {
         var toReturn = 1.0;
-        if (this.isCooking()) {
+        if (this.IsCooking()) {
             var now = new Date();
-            var diff = now - _startTime;
-            toReturn = diff / this.cookTime;
+            var diff = now.valueOf() - this._startTime.valueOf();
+            toReturn = diff / this.CookTime;
         }
         return toReturn;
     };
-    this.isCooking = function () {
+    ;
+    TimeCooker.prototype.IsCooking = function () {
         var t = new Date();
-        t.setMilliseconds(t.getMilliseconds() - this.cookTime);
-        return _startTime >= t;
+        t.setMilliseconds(t.getMilliseconds() - this.CookTime);
+        return this._startTime >= t;
     };
-    this.cook = function () {
-        if (!this.isCooking()) {
-            _startTime = new Date();
-            _nextAmount = _amount + this.amountIncrease;
+    ;
+    TimeCooker.prototype.Cook = function () {
+        if (!this.IsCooking()) {
+            this._startTime = new Date();
+            this._nextAmount = this._amount + this.AmountIncrease;
         }
     };
-};
-//# sourceMappingURL=TimeCooker.js.map 
-//# sourceMappingURL=TimeCooker.js.map 
+    ;
+    return TimeCooker;
+}());
 //# sourceMappingURL=TimeCooker.js.map

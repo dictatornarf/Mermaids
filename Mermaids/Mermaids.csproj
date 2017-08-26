@@ -98,9 +98,6 @@
     <Content Include="Scripts\bundle.min.js">
       <DependentUpon>bundle.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\game\Engine.js" />
-    <Content Include="Scripts\game\game.js" />
-    <Content Include="Scripts\game\TimeCooker.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="fonts\FontAwesome.otf" />
@@ -143,13 +140,12 @@
     <TypeScriptCompile Include="Scripts\game\lib\BoundedBox.ts" />
     <TypeScriptCompile Include="Scripts\game\lib\BoundedPoint.ts" />
     <TypeScriptCompile Include="Scripts\game\lib\Box.ts" />
-    <TypeScriptCompile Include="Scripts\game\Engine2.ts" />
-    <TypeScriptCompile Include="Scripts\game\game2.ts" />
+    <TypeScriptCompile Include="Scripts\game\Game.ts" />
     <TypeScriptCompile Include="Scripts\game\lib\ImageBox.ts" />
     <TypeScriptCompile Include="Scripts\game\lib\Point.ts" />
     <TypeScriptCompile Include="Scripts\game\lib\BoundedNumber.ts" />
     <TypeScriptCompile Include="Scripts\game\Swimmer.ts" />
-    <TypeScriptCompile Include="Scripts\game\TimeCooker2.ts" />
+    <TypeScriptCompile Include="Scripts\game\TimeCooker.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
   </ItemGroup>
   <ItemGroup>
