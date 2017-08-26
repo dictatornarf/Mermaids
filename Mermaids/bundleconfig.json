@@ -1,0 +1,30 @@
+﻿[
+  //{
+  //  "outputFileName": "output/bundle.css",
+  //  "inputFiles": [
+  //    "css/lib/*/.css", // globbing patterns are supported
+  //    "css/input/site.css"
+  //  ],
+  //  "minify": {
+  //    "enabled": true,
+  //    "commentMode": "all"
+  //  }
+  //},
+  {
+
+    "outputFileName": "Scripts/bundle.js",
+    "inputFiles": [
+      //"!js/ignore.js" // start with a ! to exclude files
+      "Scripts/game/lib/Point.js",
+      "Scripts/game/lib/Box.js",
+      "Scripts/game/lib/BoundedNumber.js",
+      "Scripts/game/lib/BoundedBox.js",
+      "Scripts/game/lib/ImageBox.js",
+      "Scripts/game/lib/BoundedPoint.js",
+      "Scripts/game/Swimmer.js",
+      "Scripts/game/TimeCooker2.js",
+      "Scripts/game/Engine2.js",
+      "Scripts/game/game2.js"
+    ]
+  }
+]

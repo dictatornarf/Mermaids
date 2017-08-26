@@ -1,0 +1,25 @@
+﻿{
+  "options": {
+    "browser": true,
+    "this": true
+  },
+  "globalVariables": [
+    "require",
+    "define",
+    "$",
+    "Game1",
+    "window"
+  ],
+  "ignore": [
+    "\\Scripts\\bootstrap.js",
+    "\\Scripts\\bootstrap.min.js",
+    "\\Scripts\\jquery-3.1.1.js",
+    "\\Scripts\\jquery-3.1.1.min.js",
+    "\\Scripts\\jquery-3.1.1.slim.js",
+    "\\Scripts\\jquery-3.1.1.slim.min.js"
+  ],
+  "output": "Warning",
+  "runOnSave": true,
+  "runOnBuild": true,
+  "cancelBuild": true
+}
